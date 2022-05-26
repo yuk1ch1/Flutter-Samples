@@ -4,6 +4,9 @@
 *.ap_
 *.aab
 
+flutter_build/
+package_config.json
+
 # Files for the ART/Dalvik VM
 *.dex
 
