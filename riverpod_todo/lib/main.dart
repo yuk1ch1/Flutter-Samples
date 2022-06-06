@@ -27,6 +27,28 @@ final todoListProvider =
     Todo(id: "1", name: "テスト", isCompleted: false),
     Todo(id: "2", name: "テスト2", isCompleted: false),
     Todo(id: "3", name: "テスト3", isCompleted: true),
+    // Todo(id: "4", name: "テスト", isCompleted: false),
+    // Todo(id: "5", name: "テスト2", isCompleted: false),
+    // Todo(id: "6", name: "テスト3", isCompleted: true),
+    // Todo(id: "7", name: "テスト", isCompleted: false),
+    // Todo(id: "8", name: "テスト2", isCompleted: false),
+    // Todo(id: "9", name: "テスト3", isCompleted: true),
+    // Todo(id: "10", name: "テスト", isCompleted: false),
+    // Todo(id: "11", name: "テスト2", isCompleted: false),
+    // Todo(id: "12", name: "テスト3", isCompleted: true),
+    // Todo(id: "14", name: "テスト", isCompleted: false),
+    // Todo(id: "15", name: "テスト2", isCompleted: false),
+    // Todo(id: "16", name: "テスト3", isCompleted: true),
+    // Todo(id: "17", name: "テスト", isCompleted: false),
+    // Todo(id: "18", name: "テスト2", isCompleted: false),
+    // Todo(id: "19", name: "テスト3", isCompleted: true),
+    // Todo(id: "20", name: "テスト", isCompleted: false),
+    // Todo(id: "21", name: "テスト2", isCompleted: false),
+    // Todo(id: "22", name: "テスト3", isCompleted: true),
+    // Todo(id: "23", name: "テスト", isCompleted: false),
+    // Todo(id: "24", name: "テスト2", isCompleted: false),
+    // Todo(id: "25", name: "テスト3", isCompleted: true),
+
   ]);
 });
 
@@ -47,18 +69,30 @@ class ToDoListView extends ConsumerWidget {
     // rebuild the widget when the todo list changes
     List<Todo> todos = ref.watch(todoListProvider);
     return Scaffold(
-        appBar: new AppBar(
-          title: new Text('ToDoList'),
-        ),
-        body: ListView(children: [
-      for (final todo in todos)
-        CheckboxListTile(
-          value: todo.isCompleted,
-          // when tapping on the todo, change its completed status
-          onChanged: (value) =>
-              ref.read(todoListProvider.notifier).toggle(todo.id),
-          title: Text(todo.name),
-        )
-    ]));
+        body: SingleChildScrollView(child: Column(children: [
+          Text('todos'),
+          ListView(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+            for (final todo in todos)
+              CheckboxListTile(
+                  value: todo.isCompleted,
+                  onChanged: (value) => ref.read(todoListProvider.notifier).toggle(todo.id),
+              title: Text(todo.name),
+              )
+          ]),
+        ]))
+    //     ListView(children: [
+    //   for (final todo in todos)
+    //     CheckboxListTile(
+    //       value: todo.isCompleted,
+    //       // when tapping on the todo, change its completed status
+    //       onChanged: (value) =>
+    //           ref.read(todoListProvider.notifier).toggle(todo.id),
+    //       title: Text(todo.name),
+    //     )
+    // ])
+    );
   }
 }
