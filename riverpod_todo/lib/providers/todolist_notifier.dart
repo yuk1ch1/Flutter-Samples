@@ -41,3 +41,9 @@ final todoListProvider =
     Todo(id: "10", name: "テスト10", isCompleted: false),
   ]);
 });
+
+final uncompletedTodosCount = Provider<int>((ref) {
+  return ref.watch(todoListProvider).where((todo) => !todo.isCompleted).length;
+});
+
+
