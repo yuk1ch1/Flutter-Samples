@@ -33,8 +33,6 @@ class ToDoListView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // rebuild the widget when the todo list changes
     List<Todo> todos = ref.watch(todoListProvider);
-    int leftTodosCount =
-        todos.where((todo) => !todo.isCompleted).toList().length;
 
     return Scaffold(
         body: Padding(
