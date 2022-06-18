@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_todo/providers/filter_type_provider.dart';
 import 'package:riverpod_todo/todo.dart';
 import 'package:riverpod_todo/providers/todolist_notifier.dart';
 
 void main() {
   runApp(ProviderScope(child: const App()));
 }
+
+final allFilterKey = UniqueKey();
+final activeFilterKey = UniqueKey();
+final completedFilterKey = UniqueKey();
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -58,9 +63,7 @@ class ToDoListView extends ConsumerWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 30),
           ),
-          Row(
-            children: [Text('$leftTodosCount' + ' items left')],
-          ),
+          const Toolbar(),
           for (final todo in todos)
             CheckboxListTile(
               value: todo.isCompleted,
@@ -71,5 +74,78 @@ class ToDoListView extends ConsumerWidget {
         ],
       ),
     ));
+  }
+}
+
+class Toolbar extends ConsumerWidget {
+  const Toolbar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final filter = ref.watch(filterProvider);
+
+    Color? textColorFor(Filter value) {
+      return filter == value ? Colors.blue : Colors.black;
+    }
+
+    return Material(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              '${ref.watch(uncompletedTodosCount).toString()} items left',
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Tooltip(
+            key: allFilterKey,
+            message: 'All todos',
+            child: TextButton(
+              onPressed: () =>
+                  ref.read(filterProvider.notifier).state = Filter.all,
+              style: ButtonStyle(
+                visualDensity: VisualDensity.compact,
+                foregroundColor:
+                    MaterialStateProperty.all(textColorFor(Filter.all)),
+              ),
+              child: const Text('All'),
+            ),
+          ),
+          Tooltip(
+            key: activeFilterKey,
+            message: 'Only uncompleted todos',
+            child: TextButton(
+              onPressed: () =>
+                  ref.read(filterProvider.notifier).state = Filter.notCompleted,
+              style: ButtonStyle(
+                visualDensity: VisualDensity.compact,
+                foregroundColor: MaterialStateProperty.all(
+                  textColorFor(Filter.notCompleted),
+                ),
+              ),
+              child: const Text('Active'),
+            ),
+          ),
+          Tooltip(
+            key: completedFilterKey,
+            message: 'Only completed todos',
+            child: TextButton(
+              onPressed: () =>
+                  ref.read(filterProvider.notifier).state = Filter.completed,
+              style: ButtonStyle(
+                visualDensity: VisualDensity.compact,
+                foregroundColor: MaterialStateProperty.all(
+                  textColorFor(Filter.completed),
+                ),
+              ),
+              child: const Text('Completed'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
