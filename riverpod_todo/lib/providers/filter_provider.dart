@@ -7,5 +7,5 @@ enum Filter {
 }
 
 final filterProvider = StateProvider<Filter>(
-    (ref) => Filter.notCompleted
+    (ref) => Filter.all
 );
