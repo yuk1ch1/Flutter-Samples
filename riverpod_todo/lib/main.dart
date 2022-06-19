@@ -5,13 +5,13 @@ import 'package:riverpod_todo/todo.dart';
 import 'package:riverpod_todo/providers/todolist_notifier_provider.dart';
 import 'package:riverpod_todo/providers/filter_todos_provider.dart';
 
-void main() {
-  runApp(ProviderScope(child: const App()));
-}
-
 final allFilterKey = UniqueKey();
 final activeFilterKey = UniqueKey();
 final completedFilterKey = UniqueKey();
+
+void main() {
+  runApp(const ProviderScope(child: App()));
+}
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
