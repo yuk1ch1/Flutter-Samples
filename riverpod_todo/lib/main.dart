@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_todo/providers/filter_provider.dart';
 import 'package:riverpod_todo/todo.dart';
-import 'package:riverpod_todo/providers/todolist_notifier.dart';
+import 'package:riverpod_todo/providers/todolist_notifier_provider.dart';
+import 'package:riverpod_todo/providers/filter_todos_provider.dart';
 
 void main() {
   runApp(ProviderScope(child: const App()));
@@ -11,25 +12,6 @@ void main() {
 final allFilterKey = UniqueKey();
 final activeFilterKey = UniqueKey();
 final completedFilterKey = UniqueKey();
-
-/// The list of todos after applying of [todoListFilter].
-///
-/// This too uses [Provider], to avoid recomputing the filtered list unless either
-/// the filter of or the todo-list updates.
-///
-final filteredTodos = Provider<List<Todo>>((ref) {
-  final filter = ref.watch(filterProvider);
-  final todos = ref.watch(todoListProvider);
-
-  switch (filter) {
-    case Filter.completed:
-      return todos.where((todo) => todo.isCompleted).toList();
-    case Filter.notCompleted:
-      return todos.where((todo) => !todo.isCompleted).toList();
-    case Filter.all:
-      return todos;
-  }
-});
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -51,7 +33,7 @@ class ToDoListView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // rebuild the widget when the todo list changes
-    List<Todo> todos = ref.watch(filteredTodos);
+    List<Todo> todos = ref.watch(filteredTodosProvider);
 
     return Scaffold(
         body: Padding(
