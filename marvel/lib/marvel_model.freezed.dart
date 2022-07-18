@@ -13,8 +13,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$MarvelListCharactersResponseTearOff {
-  const _$MarvelListCharactersResponseTearOff();
+class _$MarvelCharacterListResponseTearOff {
+  const _$MarvelCharacterListResponseTearOff();
 
   _MarvelListCharactersResponse call(
       {required int totalCount, required List<Character> characters}) {
@@ -26,35 +26,35 @@ class _$MarvelListCharactersResponseTearOff {
 }
 
 /// @nodoc
-const $MarvelListCharactersResponse = _$MarvelListCharactersResponseTearOff();
+const $MarvelCharacterListResponse = _$MarvelCharacterListResponseTearOff();
 
 /// @nodoc
-mixin _$MarvelListCharactersResponse {
+mixin _$MarvelCharacterListResponse {
   int get totalCount => throw _privateConstructorUsedError;
   List<Character> get characters => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MarvelListCharactersResponseCopyWith<MarvelListCharactersResponse>
+  $MarvelCharacterListResponseCopyWith<MarvelCharacterListResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MarvelListCharactersResponseCopyWith<$Res> {
-  factory $MarvelListCharactersResponseCopyWith(
-          MarvelListCharactersResponse value,
-          $Res Function(MarvelListCharactersResponse) then) =
-      _$MarvelListCharactersResponseCopyWithImpl<$Res>;
+abstract class $MarvelCharacterListResponseCopyWith<$Res> {
+  factory $MarvelCharacterListResponseCopyWith(
+          MarvelCharacterListResponse value,
+          $Res Function(MarvelCharacterListResponse) then) =
+      _$MarvelCharacterListResponseCopyWithImpl<$Res>;
   $Res call({int totalCount, List<Character> characters});
 }
 
 /// @nodoc
-class _$MarvelListCharactersResponseCopyWithImpl<$Res>
-    implements $MarvelListCharactersResponseCopyWith<$Res> {
-  _$MarvelListCharactersResponseCopyWithImpl(this._value, this._then);
+class _$MarvelCharacterListResponseCopyWithImpl<$Res>
+    implements $MarvelCharacterListResponseCopyWith<$Res> {
+  _$MarvelCharacterListResponseCopyWithImpl(this._value, this._then);
 
-  final MarvelListCharactersResponse _value;
+  final MarvelCharacterListResponse _value;
   // ignore: unused_field
-  final $Res Function(MarvelListCharactersResponse) _then;
+  final $Res Function(MarvelCharacterListResponse) _then;
 
   @override
   $Res call({
@@ -76,7 +76,7 @@ class _$MarvelListCharactersResponseCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$MarvelListCharactersResponseCopyWith<$Res>
-    implements $MarvelListCharactersResponseCopyWith<$Res> {
+    implements $MarvelCharacterListResponseCopyWith<$Res> {
   factory _$MarvelListCharactersResponseCopyWith(
           _MarvelListCharactersResponse value,
           $Res Function(_MarvelListCharactersResponse) then) =
@@ -87,7 +87,7 @@ abstract class _$MarvelListCharactersResponseCopyWith<$Res>
 
 /// @nodoc
 class __$MarvelListCharactersResponseCopyWithImpl<$Res>
-    extends _$MarvelListCharactersResponseCopyWithImpl<$Res>
+    extends _$MarvelCharacterListResponseCopyWithImpl<$Res>
     implements _$MarvelListCharactersResponseCopyWith<$Res> {
   __$MarvelListCharactersResponseCopyWithImpl(
       _MarvelListCharactersResponse _value,
@@ -130,14 +130,14 @@ class _$_MarvelListCharactersResponse
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MarvelListCharactersResponse(totalCount: $totalCount, characters: $characters)';
+    return 'MarvelCharacterListResponse(totalCount: $totalCount, characters: $characters)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'MarvelListCharactersResponse'))
+      ..add(DiagnosticsProperty('type', 'MarvelCharacterListResponse'))
       ..add(DiagnosticsProperty('totalCount', totalCount))
       ..add(DiagnosticsProperty('characters', characters));
   }
@@ -168,7 +168,7 @@ class _$_MarvelListCharactersResponse
 }
 
 abstract class _MarvelListCharactersResponse
-    implements MarvelListCharactersResponse {
+    implements MarvelCharacterListResponse {
   factory _MarvelListCharactersResponse(
       {required int totalCount,
       required List<Character> characters}) = _$_MarvelListCharactersResponse;

@@ -5,8 +5,8 @@ part 'marvel_model.freezed.dart';
 part 'marvel_model.g.dart';
 
 @freezed
-class MarvelListCharactersResponse with _$MarvelListCharactersResponse {
-  factory MarvelListCharactersResponse({
+class MarvelCharacterListResponse with _$MarvelCharacterListResponse {
+  factory MarvelCharacterListResponse({
     required int totalCount,
     required List<Character> characters,
   }) = _MarvelListCharactersResponse;
