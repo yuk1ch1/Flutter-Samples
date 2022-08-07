@@ -29,6 +29,8 @@ dependencies:
   flutter_hooks: ^0.18.0
   hooks_riverpod: ^2.0.0-dev.9
   dio: ^4.0.0
+  flutter_portal: ^0.4.0
+  flutter_svg: ^0.21.0+1
 
 dev_dependencies:
   build_runner: ^1.11.0
@@ -40,4 +42,6 @@ dev_dependencies:
 flutter:
   assets:
     - assets/configurations.json
+    - assets/marvel.svg
+    - assets/marvel_background.jpeg
   uses-material-design: true

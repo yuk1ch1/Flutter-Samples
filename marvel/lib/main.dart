@@ -2,12 +2,16 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:marvel/repository.dart';
+import 'package:marvel/screens/home.dart';
 
 void main() {
   runApp(
-    ProviderScope(child: MyApp()),
+    ProviderScope(
+        child: MyApp()
+    ),
   );
 }
 
@@ -18,20 +22,37 @@ class MyApp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.blue,
-        ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: ThemeData(primarySwatch: Colors.red),
+      builder: (context, child) {
+        return _Unfocus(
+            child: child!
+        );
+      },
+      home: const Portal(child: Home()),
+      onGenerateRoute: (settings) {
+        if (settings.name == null) {
+          return null;
+        }
+        final split = settings.name!.split('/');
+        Widget? result;
+        if (settings.name!.startsWith('/characters/') && split.length == 3) {
+          result = ProviderScope(
+            // overrides: [
+            //   selectedCharacterId.overrideWithValue(split.last),
+            // ], 
+              child: const SizedBox()
+          );
+        }
+        
+        if (result == null) {
+          return null;
+        }
+        return MaterialPageRoute<void>(builder: (context) => result!);
+      },
+      routes: {
+        '/character': (c) => const SizedBox() // CharacterView()
+      },
+    );
   }
 }
 
@@ -119,3 +140,28 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+/// A widget that unfocus everything when tapped.
+/// 
+/// This implements the "Unfocus when tapping in empty space" behavior for the entire application.
+class _Unfocus extends HookConsumerWidget {
+  const _Unfocus({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: child,
+    );
+  }
+}
+
+
