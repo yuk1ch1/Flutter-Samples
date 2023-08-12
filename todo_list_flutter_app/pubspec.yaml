@@ -1,0 +1,30 @@
+name: todo_list_flutter_app
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_hooks: ^0.20.0
+  hooks_riverpod: ^2.3.7
+  # @riverpod アノテーションを使用するために必要です
+  riverpod_annotation:
+  freezed: ^2.4.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  # コード生成を実行するためのパッケージ。 `freezed` などの他のコード生成パッケージを使用していれば既に導入されているかと思います
+  build_runner:
+  # Riverpodのプロバイダを生成するためのパッケージです
+  riverpod_generator:
+  json_serializable: ^6.7.1
+
+flutter:
+  uses-material-design: true
