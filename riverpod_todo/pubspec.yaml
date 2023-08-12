@@ -7,16 +7,18 @@ version: 1.0.0+1
 
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=2.0.0"
+  sdk: '>=3.0.6 <4.0.0'
+#  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.18.0
-  hooks_riverpod: ^2.0.0-dev.9
-  uuid: ^3.0.6
-  freezed: ^2.0.3+1
+  flutter_hooks: ^0.20.0
+  hooks_riverpod: ^2.3.7
+  uuid: ^3.0.7
+  freezed: ^2.4.2
+  # @riverpod アノテーションを使用するために必要です
+  riverpod_annotation:
 
   #  flutter_hooks: ^0.18.0
   #  hooks_riverpod: ^2.0.0-dev.7
@@ -26,7 +28,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.0
+  # コード生成を実行するためのパッケージ。 `freezed` などの他のコード生成パッケージを使用していれば既に導入されているかと思います
+  build_runner:
+  # Riverpodのプロバイダを生成するためのパッケージです
+  riverpod_generator:
 
 flutter:
 

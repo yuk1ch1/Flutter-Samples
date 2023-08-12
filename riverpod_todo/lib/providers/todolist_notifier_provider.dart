@@ -26,6 +26,11 @@ class ToDoListNotifier extends StateNotifier<List<Todo>> {
   }
 }
 
+// Riverpod ver2ではStateNotifierProviderではなくてNotifierProvierとAsyncNotifierProviderの利用が推奨されてるみたい
+// NotifierProvider は、 State (状態) と、それを操作する Notifier を提供するためのプロバイダ
+// 以下の用途で使用します。
+// - 時間の経過とともに変化する可能性のある状態を公開する。
+// - 長期的な保守性を向上させるために、状態を操作する非同期ビジネスロジックを一箇所に集中させる
 final todoListProvider =
     StateNotifierProvider<ToDoListNotifier, List<Todo>>((ref) {
   return ToDoListNotifier([
