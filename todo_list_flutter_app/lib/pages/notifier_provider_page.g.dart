@@ -8,7 +8,10 @@ part of 'notifier_provider_page.dart';
 
 String _$todoListHash() => r'60503188cba6e493c7e0f786b63678160ef94b3d';
 
-/// See also [TodoList].
+/// TODO（タスク）を保存、取得、削除、更新する Notifier(TodoList)
+/// _$クラス名 を継承したクラスにアノテーションを付けることでNotifierProviderが生成される(参照: https://zenn.dev/riscait/books/flutter-riverpod-practical-introduction/viewer/how-to-choose-provider-definition)
+///
+/// Copied from [TodoList].
 @ProviderFor(TodoList)
 final todoListProvider =
     AutoDisposeNotifierProvider<TodoList, List<Todo>>.internal(

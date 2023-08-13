@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:todo_list_flutter_app/pages/async_notifier_provider_page.dart';
 import 'package:todo_list_flutter_app/pages/notifier_provider_page.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const NotifierProviderPage(),
+      home: const AsyncNotifierProviderPage(),
     );
   }
 }
