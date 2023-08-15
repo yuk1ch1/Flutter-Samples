@@ -60,6 +60,9 @@ class NotifierProviderPage extends ConsumerWidget {
     // .notifierで取れるのはクラスのインスタンス？
     final todoListInstance = ref.read(todoListProvider.notifier);
 
+    // notifierをつける場合とつけない場合のいい説明が書かれてる: https://zenn.dev/riscait/books/flutter-riverpod-practical-introduction/viewer/v1-state-provider
+    // StateProviderは自動生成が現状できないみたいで、自動生成を利用したいならここで使っているNotifierProviderを使う他ないみたい
+
     // 新しいTodoを追加する、メソッドを定義
     void addTodo() {
       final newTodo = Todo(
