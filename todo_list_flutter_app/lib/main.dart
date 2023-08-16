@@ -4,11 +4,27 @@ import 'package:todo_list_flutter_app/pages/async_notifier_provider_page.dart';
 import 'package:todo_list_flutter_app/pages/consumer.dart';
 import 'package:todo_list_flutter_app/pages/notifier_provider_page.dart';
 
+import 'package:todo_list_flutter_app/flavor.dart';
+
 void main() {
+  // ビルド時に指定したFlavorを取得
+  // String.fromEnvironment('FLAVOR')と書くことで、ビルド時に--dart-define=FLAVOR=xxxで指定したFlavorの文字列を取得できる
+  // って書いてあったけど多分これはGUIでも同じなのかな？
+  final flavorString = const String.fromEnvironment('FLAVOR');
+  // enumから'flavorString'と一致するFlavorを取得
+  final flavor = Flavor.values.firstWhere((element) => element.name == flavorString);
+
   runApp(
-      const ProviderScope(child: MyApp())
+      ProviderScope(
+          overrides: [
+            // flavorProviderの値に'flavor'を入れる
+            flavorProvider.overrideWithValue(flavor),
+          ],
+          child: const MyApp()
+      )
   );
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
