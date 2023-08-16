@@ -64,6 +64,7 @@ class NotifierProviderPage extends ConsumerWidget {
     // StateProviderは自動生成が現状できないみたいで、自動生成を利用したいならここで使っているNotifierProviderを使う他ないみたい
     // StateNotifierProviderも自動生成が現状できないみたい。自動生成を利用したいなら同様にNotifierProviderを使う他ないみたい
     // StateProviderと同じ機能をもつProviderは他にないが、StateNotifierProviderとNotifierProviderは同じ機能のように見える
+    // 用途としてはChangeNotifierProviderも同じ
 
     // 新しいTodoを追加する、メソッドを定義
     void addTodo() {
