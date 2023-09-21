@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:todo_list_flutter_app/pages/home_page/home_page_notifier.dart';
+import 'package:todo_list_flutter_app/pages/samples/home_page/home_page_notifier.dart';
 
 class HomePage2 extends ConsumerWidget {
   const HomePage2({Key? key}) : super(key: key);

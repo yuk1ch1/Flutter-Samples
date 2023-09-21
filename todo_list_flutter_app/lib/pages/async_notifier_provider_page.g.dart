@@ -6,7 +6,7 @@ part of 'async_notifier_provider_page.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$asyncTodoListHash() => r'19b552bc95ae40b9ae91471eed87fffd034f0c8d';
+String _$asyncTodoListHash() => r'4764d9eb3ad2740be1957f60b5634b87f53cec4a';
 
 /// _$クラス名 を継承したクラスにアノテーションを付けることでProviderが生成される(参照: https://zenn.dev/riscait/books/flutter-riverpod-practical-introduction/viewer/how-to-choose-provider-definition)
 ///

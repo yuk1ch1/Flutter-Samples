@@ -20,6 +20,7 @@ dependencies:
   freezed: ^2.4.2
   dio: ^5.3.2
   shared_preferences: ^2.2.0
+  firebase_auth: ^4.7.3
 
 dev_dependencies:
   flutter_test:

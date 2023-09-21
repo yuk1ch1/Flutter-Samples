@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:todo_list_flutter_app/pages/async_notifier_provider_page.dart';
 import 'package:todo_list_flutter_app/pages/consumer.dart';
 import 'package:todo_list_flutter_app/pages/notifier_provider_page.dart';
-import 'package:todo_list_flutter_app/pages/home_page/home_page.dart';
+import 'package:todo_list_flutter_app/pages/samples/home_page/home_page.dart';
 
 import 'package:todo_list_flutter_app/flavor.dart';
 
